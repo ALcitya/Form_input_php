@@ -7,24 +7,31 @@
 </head>
 <body>
     <?php
+    function hitungGaji($gajiPokok){
+        $pph = (21/100)*$gajiPokok;
+        $gajiBersih=$gajiPokok-$pph;
+
+        // ? Mengembalikan array yang berisi PPH dan Gaji Bersih
+        return ['pph' => $pph, 'gajiBersih' => $gajiBersih];
+    }
     $jabatan = $_POST["jabatan"];
     switch ($jabatan){
         case "manager":
             $gajiPokok = 5000000;
-            $pph = (21/100)*$gajiPokok;
-            $gajiBersih=$gajiPokok-$pph;
         break;
         case "sekretaris":
             $gajiPokok = 2000000;
-            $pph = (21/100)*$gajiPokok;
-            $gajiBersih=$gajiPokok-$pph;
         break;
         case "staf":
             $gajiPokok = 1500000;
-            $pph = (21/100)*$gajiPokok;
-            $gajiBersih=$gajiPokok-$pph;
         break;
     }
+    // todo- memanggil fungsi hitung gaji
+    $hasilPerhitungan = hitungGaji($gajiPokok);
+
+    // todo - menyimpan nilai pph dan gaji bersih
+    $pph = $hasilPerhitungan["pph"];
+    $gajiBersih = $hasilPerhitungan["gajiBersih"];
     ?>
     <table border="1">
         <tr>
